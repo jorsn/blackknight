@@ -54,8 +54,8 @@ $ cabal build
 
 to build without installation.
 
-*To are able to run **blackknight** you have to install it as root (`sudo cabal install --global`)
-or copy `pam.d/blackknight` to `/etc/pam.d/` with permissions set to `0644`.*
+_To are able to run **blackknight** you have to install it as root (`sudo cabal install --global`)
+or copy `pam.d/blackknight` to `/etc/pam.d/` with permissions set to `0644`._
 
 [cabal]:  http://www.haskell.org/cabal
 
