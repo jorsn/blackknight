@@ -2,24 +2,32 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                blackknight
-version:             0.1.0.0
--- synopsis:            
--- description:         
+version:             0.6
+synopsis:            A terminal screen locker.
+description:	     blackknight is a screen locker for text terminals using PAM for
+		     password checking.
+		     It locks single terminals and can be used as lock-command for TMux.
+homepage:            https://github.com/jorsn/blackknight
 license:             BSD3
 license-file:        LICENSE
 author:              Johannes Rosenberger
 maintainer:          jo.rosenberger@gmx-topmail.de
--- copyright:           
 category:            System
-build-type:          Simple
--- extra-source-files:  
+build-type:          Custom
 cabal-version:       >=1.10
+tested-with:	     GHC==7.6.3
 
 executable blackknight
   main-is: blackknight.hs
-  -- other-modules:       
-  -- other-extensions:    
   build-depends:       base >=4.6 && <4.7
-  build-depends:       unix, pam
-  -- hs-source-dirs:      
+  build-depends:       unix, pam, bytestring
   default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/jorsn/blackknight.git
+
+source-repository this
+  type:     git
+  location: https://github.com/jorsn/blackknight.git
+  tag:      0.6
