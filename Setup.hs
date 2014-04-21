@@ -9,7 +9,7 @@ main = defaultMainWithHooks simpleUserHooks {
 
 name = "blackknight"
 
-pamdir = "./etc/pam.d/"
+pamdir = "/etc/pam.d/"
 srcpam = "./pam.d/" ++ name
 destpam = pamdir ++ name
 
