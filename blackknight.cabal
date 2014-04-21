@@ -17,6 +17,9 @@ build-type:          Custom
 cabal-version:       >=1.10
 tested-with:	     GHC==7.6.3
 
+extra-doc-files:     README.md
+extra-source-files:  pam.d/blackknight
+
 executable blackknight
   main-is: blackknight.hs
   build-depends:       base >=4.6 && <4.7

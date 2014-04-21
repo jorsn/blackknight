@@ -1,28 +1,21 @@
 import Distribution.Simple
-
-import System.Directory
-import System.Posix.Types
-import System.Posix.Files
-import Numeric
+import Distribution.Simple.LocalBuildInfo
+import Distribution.Simple.Utils
+import Distribution.Verbosity
 
 main = defaultMainWithHooks simpleUserHooks {
 	postInst = cpconfig
 }
 
-pamdir = "/etc/pam.d/"
 name = "blackknight"
 
+pamdir = "./etc/pam.d/"
 srcpam = "./pam.d/" ++ name
 destpam = pamdir ++ name
 
-getOct s = filter $ readOct s
-	where filter ((i, a):_) = i
-
-cpconfig _ _ _ _ = doCP =<< fileExist destpam 
-	where doCP False = do
-		putStrLn $ "Copying " ++ srcpam ++ " to " ++ destpam ++ "."
-		createDirectoryIfMissing True pamdir
-		copyFile srcpam destpam
-		putStrLn $ "Setting permissions for " ++ destpam ++ " to 0644."
-		setFileMode destpam $ CMode $ getOct "0644"
-	      doCP True = return ()
+cpconfig _ _ _ info = do
+	createDirectoryIfMissingVerbose verbose True pamdir
+	installOrdinaryFile verbose srcpam destpam
+	installOrdinaryFile verbose "README.md" $
+		(fromPathTemplate (docdir $ installDirTemplates info))
+		++ "/README.md"
