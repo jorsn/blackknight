@@ -88,7 +88,7 @@ auth lockh = do
 clearScreen lockh b = getTerminalName stdInput >>= \tty ->
         if b && "tty" `isInfixOf` tty then do
                 lockh' <- getVcsa lockh tty
-                putStr "\ESC[H\ESC[2J"
+                putStr "\ESC[H\ESC[3J"
                 return lockh'
         else return $ lockh { vcsa = NoVCSA }
 
