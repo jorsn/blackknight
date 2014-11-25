@@ -27,13 +27,17 @@ Possible cmdline options are:
 | `<alternate lock message>` | Display the given message instead of the default one.
 
 
+**Warning: `blackknight` clears the screen *and the scrollback buffer* when locking.
+Only the schreen *without the scrollback buffer* is restored when unlocking.**
+
+
 Usage as TMux lock-command
 ---------------------------
 
 Place the following line in `/etc/tmux.conf` or `~/.tmux.conf`:
 
 ```
-set-option -g lock-command 'blackknight --noclear'
+set-option -g lock-command 'blackknight'
 ```
 
 
@@ -54,7 +58,7 @@ $ cabal build
 
 to build without installation.
 
-_To are able to run **blackknight** you have to install it as root (`sudo cabal install --global`)
+_To be able to run **blackknight** you have to install it as root (`sudo cabal install --global`)
 or copy `pam.d/blackknight` to `/etc/pam.d/` with permissions set to `0644`._
 
 [cabal]:  http://www.haskell.org/cabal
